@@ -1,19 +1,23 @@
 extends Node
 
 @export var mob_scene: PackedScene
-var score: int # TODO: setter
+var score: int
 
 func _on_hud_prep_game() -> void:
-  $HUD.set_score("-")
+  set_score_text("-")
   score = 0
   $Player.start($StartPosition.position)
 func _on_hud_start_game() -> void:
+  set_score_text()
   $ScoreTimer.start()
   $MobTimer.start()
 
+func set_score_text(score_text: String = str(score)) -> String:
+  $HUD.set_score_text(score_text)
+  return score_text
 func _on_score_timer_timeout() -> void:
   score += 1
-  $HUD.set_score(str(score))
+  set_score_text()
 
 func _on_mob_timer_timeout() -> void:
   $MobPath/MobSpawnLocation.progress_ratio = randf()

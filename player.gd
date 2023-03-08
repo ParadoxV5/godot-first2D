@@ -10,7 +10,7 @@ signal hit
 func _ready() -> void:
   hide()
   screen_size = get_viewport_rect().size
-func start(position2: Vector2) -> void:
+func start(position2: Vector2) -> void: #TODO: @export
   position = position2
   show()
   $CollisionShape2D.disabled = false

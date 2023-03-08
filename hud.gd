@@ -21,8 +21,8 @@ func game_over() -> void:
   await show_message("Dodge the Creeps!", TITLE_TIMEOUT) #TODO: unify string
   $StartButton.show()
 
-func set_score(score: String) -> void:
-  $ScoreLabel.text = score
+func set_score_text(score_text: String) -> void:
+  $ScoreLabel.text = score_text
 
 func _on_start_button_pressed() -> void:
   prep_game.emit()
