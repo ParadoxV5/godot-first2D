@@ -4,6 +4,7 @@ extends Node
 var score: int
 
 func _on_hud_prep_game() -> void:
+  get_tree().call_group(&"mobs", &"queue_free")
   set_score_text("-")
   score = 0
   $Player.start($StartPosition.position)
