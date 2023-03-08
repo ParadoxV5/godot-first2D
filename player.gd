@@ -2,11 +2,18 @@ extends Area2D
 
 ## How fast the player will move (pixels/sec).
 @export var speed = 400
-
 ## Size of the game window.
 var screen_size
+##
+signal hit
+
 func _ready():
+  hide()
   screen_size = get_viewport_rect().size
+func start(position2):
+  position = position2
+  show()
+  $CollisionShape2D.disabled = false
 
 func _process(delta):
   var velocity = Vector2.ZERO # The player's movement vector.
@@ -35,3 +42,9 @@ func _process(delta):
     position = position2
   else:
     $AnimatedSprite2D.stop()
+
+func _on_body_entered(_body):
+  hit.emit()
+  hide()
+  $CollisionShape2D.set_deferred(&"disabled", true)
+    # Must be deferred as a physics callback can't change a physics property.
