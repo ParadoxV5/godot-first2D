@@ -1,24 +1,34 @@
 extends CanvasLayer
 
-const GAMEOVER_TEXT: String = "Game Over"
+const READY_MSG: String = "Get Ready"
+const READY_TIMEOUT: int = 2
+const GAMEOVER_MSG: String = "Game Over"
+const GAMEOVER_TIMEOUT: int = 2
+const TITLE_TIMEOUT: int = 1
 
-## Notifies `Main` node when pressing the start button
+## Notifies when pressing the start button
+signal prep_game
+## Notifies after a timeout after `prep_game`
 signal start_game
 
 func show_message(text: Variant, timeout: float) -> Signal:
   $Message.text = text
-  $Message.show()
   return get_tree().create_timer(timeout).timeout
 
-func show_game_over() -> void:
-  await show_message(GAMEOVER_TEXT, 2)
-  await show_message("Dodge the Creeps!", 1)
+func game_over() -> void:
+  $Message.show()
+  await show_message(GAMEOVER_MSG, GAMEOVER_TIMEOUT)
+  await show_message("Dodge the Creeps!", TITLE_TIMEOUT) #TODO: unify string
   $StartButton.show()
 
-func update_score(score: Variant) -> void:
+func set_score(score: String) -> void:
   $ScoreLabel.text = score
 
 func _on_start_button_pressed() -> void:
+  prep_game.emit()
+func _on_prep_game() -> void:
+  $StartButton.hide()
+  await show_message(READY_MSG, READY_TIMEOUT)
   start_game.emit()
 func _on_start_game() -> void:
-  $StartButton.hide()
+  $Message.hide()
