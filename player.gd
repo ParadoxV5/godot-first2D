@@ -3,14 +3,14 @@ extends Area2D
 ## How fast the player will move (pixels/sec).
 @export var speed = 400
 ## Size of the game window.
-var screen_size
+var screen_size: Vector2
 ##
 signal hit
 
 func _ready():
   hide()
   screen_size = get_viewport_rect().size
-func start(position2):
+func start(position2: Vector2):
   position = position2
   show()
   $CollisionShape2D.disabled = false
@@ -36,7 +36,7 @@ func _process(delta):
       $AnimatedSprite2D.flip_h = velocity.x < 0
     $AnimatedSprite2D.play()
     
-    var position2 = position + velocity.normalized() * speed * delta
+    var position2: Vector2 = position + velocity.normalized() * speed * delta
     position2.x = clamp(position2.x, 0, screen_size.x)
     position2.y = clamp(position2.y, 0, screen_size.y)
     position = position2
