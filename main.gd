@@ -3,11 +3,13 @@ extends Node
 @export var mob_scene: PackedScene
 var score: int
 
+## New Game
 func _on_hud_prep_game() -> void:
   get_tree().call_group(&"mobs", &"queue_free")
   set_score_text("-")
-  score = 0
+  $Music.play()
   $Player.start($StartPosition.position)
+  score = 0
 func _on_hud_start_game() -> void:
   set_score_text()
   $ScoreTimer.start()
@@ -37,3 +39,5 @@ func _on_player_hit() -> void:
   $HUD.game_over()
   $ScoreTimer.stop()
   $MobTimer.stop()
+  $Music.stop()
+  $DeathSound.play()
