@@ -20,7 +20,15 @@ func _process(delta):
     velocity.y -= 1
   
   if velocity.length() > 0:
+    if velocity.x == 0:
+      $AnimatedSprite2D.animation = &"up"
+      $AnimatedSprite2D.flip_v = velocity.y > 0
+    else:
+      $AnimatedSprite2D.animation = &"walk"
+      $AnimatedSprite2D.flip_v = false
+      $AnimatedSprite2D.flip_h = velocity.x < 0
     $AnimatedSprite2D.play()
+    
     var position2 = position + velocity.normalized() * speed * delta
     position2.x = clamp(position2.x, 0, screen_size.x)
     position2.y = clamp(position2.y, 0, screen_size.y)
