@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgkwomnyak2b3"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_c5lmx"]
-[ext_resource type="Texture2D" uid="uid://dcbqbiuj4mr18" path="res://art/playerGrey_up1.png" id="1_to7ad"]
-[ext_resource type="Texture2D" uid="uid://bd7kqhsms5e07" path="res://art/playerGrey_up2.png" id="2_du4ha"]
-[ext_resource type="Texture2D" uid="uid://c62x8fjlf6ton" path="res://art/playerGrey_walk1.png" id="3_5xo4x"]
-[ext_resource type="Texture2D" uid="uid://bmckv2dsg4bny" path="res://art/playerGrey_walk2.png" id="4_tquox"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_ro542"]
+[ext_resource type="Texture2D" uid="uid://dcbqbiuj4mr18" path="res://player/assets/playerGrey_up1.png" id="1_to7ad"]
+[ext_resource type="Texture2D" uid="uid://bd7kqhsms5e07" path="res://player/assets/playerGrey_up2.png" id="2_du4ha"]
+[ext_resource type="Texture2D" uid="uid://c62x8fjlf6ton" path="res://player/assets/playerGrey_walk1.png" id="3_5xo4x"]
+[ext_resource type="Texture2D" uid="uid://bmckv2dsg4bny" path="res://player/assets/playerGrey_walk2.png" id="4_tquox"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eu27h"]
 animations = [{
@@ -36,7 +36,7 @@ radius = 27.0
 height = 68.0
 
 [node name="Player" type="Area2D"]
-script = ExtResource("1_c5lmx")
+script = ExtResource("1_ro542")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0qjk4lfqul7v"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_cjg45"]
-[ext_resource type="FontFile" uid="uid://dmyvofcho3hcw" path="res://fonts/Xolonium-Regular.ttf" id="1_shmav"]
+[ext_resource type="Script" path="res://hud/hud.gd" id="1_h54ph"]
+[ext_resource type="FontFile" uid="uid://dmyvofcho3hcw" path="res://hud/fonts/Xolonium-Regular.ttf" id="1_shmav"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_sc3cj"]
 action = &"start_game"
@@ -10,7 +10,7 @@ action = &"start_game"
 events = [SubResource("InputEventAction_sc3cj")]
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_cjg45")
+script = ExtResource("1_h54ph")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 10
