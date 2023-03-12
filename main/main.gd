@@ -1,5 +1,6 @@
 extends Node
 
+const QUARTER_TURN = TAU / 4
 @export var mob_scene: PackedScene
 var score: int
 
@@ -25,12 +26,8 @@ func _on_mob_timer_timeout() -> void:
   $MobPath/MobSpawnLocation.progress_ratio = randf()
   var mob: RigidBody2D = mob_scene.instantiate()
   mob.position = $MobPath/MobSpawnLocation.position
-  mob.rotation_degrees =\
-    $MobPath/MobSpawnLocation.rotation_degrees + randi_range(45, 135)
-    # Direction along clockwise path + 90° + randi_range(-45, 45)
-    # TODO: @export
-  mob.linear_velocity = Vector2(randf_range(150, 250), 0).rotated(mob.rotation)
-    # TODO: @export
+  mob.rotation = $MobPath/MobSpawnLocation.rotation + QUARTER_TURN
+    # Direction along clockwise path + turn inward + randomize upon `add_child`
   add_child(mob)
 
 ## Game Over

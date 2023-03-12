@@ -11,6 +11,10 @@ signal prep_game
 ## Notifies after a timeout after `prep_game`
 signal start_game
 
+var title_msg: String
+func _ready() -> void:
+  title_msg = $Message.text
+
 func show_message(text: Variant, timeout: float) -> Signal:
   $Message.text = text
   return get_tree().create_timer(timeout).timeout
@@ -18,7 +22,7 @@ func show_message(text: Variant, timeout: float) -> Signal:
 func game_over() -> void:
   $Message.show()
   await show_message(GAMEOVER_MSG, GAMEOVER_TIMEOUT)
-  await show_message("Dodge the Creeps!", TITLE_TIMEOUT) #TODO: unify string
+  await show_message(title_msg, TITLE_TIMEOUT)
   $StartButton.show()
 
 func set_score_text(score_text: String) -> void:

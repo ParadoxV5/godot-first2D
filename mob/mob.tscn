@@ -52,6 +52,9 @@ height = 98.0
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_qcgkw")
+rotation_range = 45.0
+velocity_min = 150.0
+velocity_max = 250.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
