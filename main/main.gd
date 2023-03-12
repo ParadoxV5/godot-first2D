@@ -8,7 +8,6 @@ func _on_hud_prep_game() -> void:
   get_tree().call_group(&"mobs", &"queue_free")
   set_score_text("-")
   $Music.play()
-  $Player.start($StartPosition.position)
   score = 0
 func _on_hud_start_game() -> void:
   set_score_text()

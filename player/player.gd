@@ -4,14 +4,18 @@ extends Area2D
 @export var speed = 400
 ## Size of the game window.
 var screen_size: Vector2
+## Starting position determined by `Main`’s preview
+var start_position: Vector2
 ##
 signal hit
 
 func _ready() -> void:
   hide()
+  start_position = position
   screen_size = get_viewport_rect().size
-func start(position2: Vector2) -> void: #TODO: @export
-  position = position2
+
+func _on_hud_prep_game() -> void:
+  position = start_position
   show()
   $CollisionShape2D.disabled = false
 

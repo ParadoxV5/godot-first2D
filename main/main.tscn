@@ -26,14 +26,12 @@ grow_vertical = 2
 color = Color(0.223529, 0.427451, 0.439216, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_dtmyc")]
+position = Vector2(240, 450)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
 
 [node name="ScoreTimer" type="Timer" parent="."]
-
-[node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(240, 450)
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_fq2ep")
@@ -52,4 +50,5 @@ stream = ExtResource("6_445hu")
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="prep_game" from="HUD" to="." method="_on_hud_prep_game"]
+[connection signal="prep_game" from="HUD" to="Player" method="_on_hud_prep_game"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
