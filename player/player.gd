@@ -16,6 +16,10 @@ func _ready() -> void:
 
 func _on_hud_prep_game() -> void:
   position = start_position
+  # Reset `$AnimatedSprite2D`
+  $AnimatedSprite2D.animation = &"walk"
+  $AnimatedSprite2D.flip_v = false
+  $AnimatedSprite2D.flip_h = false
   show()
   $CollisionShape2D.disabled = false
 
